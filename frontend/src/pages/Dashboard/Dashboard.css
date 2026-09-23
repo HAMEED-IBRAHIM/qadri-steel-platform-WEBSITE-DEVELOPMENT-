@@ -1,0 +1,331 @@
+.dashboard-page {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+
+
+/* Welcome Banner */
+.welcome-banner {
+  background: linear-gradient(135deg, #1e3a5f 0%, #0c1f3a 100%);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.banner-text h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.banner-text p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.banner-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.banner-actions .secondary-btn {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+.banner-actions .secondary-btn:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* Stats Row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 1px solid #e5e7eb;
+  transition: 0.2s;
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+
+.stat-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.15rem 0;
+  color: #111827;
+}
+
+.stat-trend {
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-trend.positive { color: #10b981; }
+.stat-trend.negative { color: #ef4444; }
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.5rem;
+}
+
+.dash-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.card-top h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Product Table */
+.product-table {
+  width: 100%;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 0.8fr 1fr;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 0.8fr 1fr;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f8fafc;
+  align-items: center;
+  transition: 0.15s;
+}
+
+.table-row:hover {
+  background: #f8fafc;
+}
+
+.product-name {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.9rem;
+}
+
+.product-brand {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.product-price {
+  color: #059669;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.stock-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.stock-badge.in-stock {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.stock-badge.low-stock {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+/* Business Card */
+.business-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.business-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.info-icon {
+  color: #3b82f6;
+  font-size: 16px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.info-row strong {
+  font-size: 0.8rem;
+  color: #374151;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.info-row p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.category-chips h4,
+.quick-actions h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 0.6rem;
+}
+
+.chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  background: #eff6ff;
+  color: #3b82f6;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.full-w {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .welcome-banner { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .banner-actions { justify-content: center; }
+}
+
+
+.dashboard-animated-bg {
+  position: absolute;
+  top: -20px; left: -20px; right: -20px; bottom: -20px;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55; /* High enough to be clearly seen */
+  border-radius: 20px;
+  /* Removed mix-blend-mode multiply so it doesn't get swallowed by dark backgrounds */
+}
+
+.steel-anim-img {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+  opacity: 0.9; /* High opacity to ensure they are seen */
+  /* Softer mask to show more of the image but keep blended edges */
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0.1) 75%, transparent 100%);
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 40%, rgba(0,0,0,0.1) 75%, transparent 100%);
+  filter: contrast(1.1) brightness(1.1);
+}
+
+.anim-1 { top: 10%; left: -20%; animation: flyAcross 25s linear infinite; }
+.anim-2 { top: 40%; right: -20%; animation: flyAcrossReverse 35s linear infinite; width: 180px; }
+.anim-3 { top: 70%; left: -20%; animation: flyAcross 30s linear infinite; width: 220px; animation-delay: -5s; }
+.anim-4 { top: -10%; right: 20%; animation: floatAround 20s ease-in-out infinite; width: 160px; }
+.anim-5 { bottom: -10%; left: 30%; animation: floatAround 25s ease-in-out infinite alternate; width: 140px; }
+
+@keyframes flyAcross {
+  0% { transform: translateX(0) rotate(0deg); }
+  100% { transform: translateX(120vw) rotate(360deg); }
+}
+
+@keyframes flyAcrossReverse {
+  0% { transform: translateX(0) rotate(0deg); }
+  100% { transform: translateX(-120vw) rotate(-360deg); }
+}
+
+@keyframes floatAround {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, 40px) rotate(15deg); }
+  66% { transform: translate(-20px, 60px) rotate(-10deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}

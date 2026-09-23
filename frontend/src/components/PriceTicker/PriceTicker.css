@@ -1,0 +1,127 @@
+
+.price-ticker-bar {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(90deg, #0c1a2e, #1a2f4a, #0c1a2e);
+  border-bottom: 1px solid rgba(251,191,36,0.3);
+  display: flex;
+  align-items: center;
+  height: 36px;
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.ticker-label {
+  background: #fbbf24;
+  color: #111;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0 12px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.ticker-track {
+  flex: 1;
+  overflow: hidden;
+}
+
+.ticker-inner {
+  display: flex;
+  animation: tickerScroll 35s linear infinite;
+  width: max-content;
+}
+
+.ticker-inner:hover { animation-play-state: paused; }
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  white-space: nowrap;
+}
+
+.ticker-product {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.ticker-price {
+  color: #4ade80;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.ticker-sep {
+  color: rgba(255,255,255,0.2);
+  margin-left: 6px;
+}
+
+.ticker-edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.ticker-edit-btn:hover { opacity: 1; }
+
+.ticker-editor {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  background: #0f172a;
+  border: 1px solid rgba(251,191,36,0.3);
+  border-radius: 0 0 12px 12px;
+  padding: 1.2rem;
+  z-index: 999;
+  width: 380px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.ticker-editor h4 {
+  color: #fbbf24;
+  margin: 0 0 0.8rem;
+  font-size: 0.9rem;
+}
+
+.ticker-editor-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.ticker-editor-row input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.ticker-save-btn {
+  background: #fbbf24; color: #111; font-weight: 700; border: none;
+  padding: 6px 14px; border-radius: 8px; cursor: pointer; margin-top: 8px; margin-right: 8px;
+}
+.ticker-cancel-btn {
+  background: transparent; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px 14px; border-radius: 8px; cursor: pointer; margin-top: 8px;
+}

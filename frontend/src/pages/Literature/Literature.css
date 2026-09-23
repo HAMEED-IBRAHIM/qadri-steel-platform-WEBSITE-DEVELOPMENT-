@@ -1,0 +1,86 @@
+
+.brands-page { max-width: 1200px; }
+.brands-header h1 { font-size: 1.75rem; font-weight: 700; color: #111827; margin: 0 0 0.35rem; }
+.brands-header p { color: #6b7280; font-size: 0.95rem; margin: 0 0 1.5rem; }
+
+.brands-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+.brands-tabs .tab-btn {
+  padding: 8px 20px; border: 1px solid #e5e7eb; border-radius: 8px;
+  background: #fff; font-size: 0.9rem; cursor: pointer; color: #6b7280;
+  transition: 0.15s; display: flex; align-items: center; gap: 8px; font-weight: 500;
+}
+.brands-tabs .tab-btn:hover { background: #f9fafb; }
+.brands-tabs .tab-btn.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+
+.brands-layout { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; align-items: start; }
+.brand-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.brand-card {
+  display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  cursor: pointer; transition: 0.15s;
+}
+.brand-card:hover { border-color: #3b82f6; }
+.brand-card.selected { border-color: #3b82f6; background: #eff6ff; }
+.brand-logo {
+  width: 42px; height: 42px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 800; font-size: 12px; flex-shrink: 0;
+}
+.brand-info h4 { margin: 0; font-size: 0.95rem; color: #1f2937; }
+.supplier-status { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+.supplier-status.active { background: #ecfdf5; color: #059669; }
+.supplier-status.occasional { background: #fef3c7; color: #d97706; }
+
+.brand-detail {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem;
+}
+.detail-top { display: flex; align-items: center; gap: 16px; margin-bottom: 1rem; }
+.detail-logo {
+  width: 56px; height: 56px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 800; font-size: 16px;
+}
+.detail-top h2 { margin: 0 0 4px; font-size: 1.5rem; color: #111827; }
+.brand-desc { color: #6b7280; line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.95rem; }
+.detail-section { margin-bottom: 1.5rem; }
+.detail-section h4 { margin: 0 0 0.75rem; font-size: 0.9rem; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.5px; }
+.product-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.product-chip {
+  background: #f0fdf4; color: #059669; padding: 6px 14px;
+  border-radius: 20px; font-size: 0.8rem; font-weight: 500;
+  display: flex; align-items: center; gap: 6px;
+}
+.contact-rows { display: flex; flex-direction: column; gap: 8px; }
+.contact-row { display: flex; align-items: center; gap: 10px; color: #374151; font-size: 0.9rem; }
+.contact-row svg { color: #3b82f6; }
+
+/* Catalogs */
+.catalogs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
+.catalog-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+  overflow: hidden; transition: 0.2s;
+}
+.catalog-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.catalog-card img { width: 100%; height: auto; display: block; }
+.catalog-card h4 { margin: 1rem 1.25rem 0.35rem; font-size: 1.05rem; color: #111827; }
+.catalog-card p { margin: 0 1.25rem 1.25rem; font-size: 0.9rem; color: #6b7280; }
+
+@media (max-width: 768px) {
+  .brands-layout { grid-template-columns: 1fr; }
+  .catalogs-grid { grid-template-columns: 1fr; }
+}
+
+
+.rates-container { max-width: 900px; margin: 0 auto; }
+.rates-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 2rem; }
+.rates-card h3 { margin: 0 0 0.5rem; color: #111827; font-size: 1.25rem; }
+.rates-subtitle { color: #6b7280; font-size: 0.9rem; margin-bottom: 1.5rem; }
+.rates-table { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+.rt-header { display: grid; grid-template-columns: 2fr 1.5fr 1fr; background: #f8fafc; padding: 12px 16px; font-size: 0.8rem; font-weight: 600; color: #6b7280; text-transform: uppercase; border-bottom: 1px solid #e5e7eb; }
+.rt-row { display: grid; grid-template-columns: 2fr 1.5fr 1fr; padding: 14px 16px; border-bottom: 1px solid #f3f4f6; align-items: center; font-size: 0.95rem; }
+.rt-row:last-child { border-bottom: none; }
+.rt-name { font-weight: 600; color: #1f2937; }
+.rt-price { font-weight: 700; color: #059669; }
+.rt-trend.up { color: #059669; }
+.rt-trend.down { color: #ef4444; }
+.rt-trend.flat { color: #9ca3af; }

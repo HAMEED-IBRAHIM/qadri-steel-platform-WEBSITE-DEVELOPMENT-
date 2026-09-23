@@ -1,0 +1,559 @@
+# ==============================================================================
+# BIOINKAI MASTER BIOMATERIAL TEMPLATE
+# ==============================================================================
+# This template defines the structure for all biomaterials in the knowledge base.
+# When adding new materials, copy this structure and fill in the values.
+# Use "[Placeholder]" or ranges where exact values are variable.
+# ==============================================================================
+
+Knowledge Base Metadata:
+  Material ID: "MAT-[XXXX]"
+  Template Version: "1.1"
+  Knowledge Base Version: "1.0"
+  Created By: "BioInkAI System"
+  Last Updated: "YYYY-MM-DD"
+  Last Reviewed: "YYYY-MM-DD"
+  Scientific Reviewer: "[Reviewer Name]"
+  Confidence Score: "[0.0 - 1.0]"
+  Verification Status: "Unverified"
+  Review Notes: "[Review Notes or N/A]"
+
+# 1. Material Information
+Material Information:
+  Material Name: "[Material Name]"
+  Scientific Name: "[Scientific Name]"
+  Common Names: 
+    - "[Common Name 1]"
+    - "[Common Name 2]"
+  Abbreviation: "[Abbreviation]"
+  Description: "[Detailed scientific description of the material]"
+  Source: "[Natural/Synthetic/Semi-synthetic]"
+  Major Sources:
+    - "[Source 1]"
+    - "[Source 2]"
+  Material Type: "[Polymer/Ceramic/Composite/Metal/Other]"
+  Polymer Class: "[Polysaccharide/Protein/Synthetic/etc.]"
+  Origin: "[Origin]"
+  Grade: "[Research Grade/Medical Grade/Industrial Grade]"
+  CAS Number: "[XXXXXXX-XX-X]"
+  Chemical Formula: "[Chemical Formula]"
+  FDA Status: "[Approved/Unapproved/GRAS/etc.]"
+  Printable: "[Yes/No/Needs Modification]"
+  Bioink Role: "[Structural/Sacrificial/Bioactive/etc.]"
+  Commercial Availability: "[High/Medium/Low/Custom]"
+  Typical Suppliers:
+    - "[Supplier 1]"
+    - "[Supplier 2]"
+
+# 2. Physical Properties
+Physical Properties:
+
+  General:
+    Appearance: "[Placeholder]"
+    Color: "[Placeholder]"
+    Physical State: "[Solid / Powder / Hydrogel / Liquid]"
+    Odor: "[Placeholder]"
+
+  Molecular Properties:
+    Molecular Weight:
+      Value: "[Placeholder]"
+      Unit: "kDa"
+
+    Density:
+      Value: "[Placeholder]"
+      Unit: "g/cm³"
+
+  Rheological Properties:
+    Viscosity:
+      Value: "[Placeholder]"
+      Unit: "cP"
+      Notes: "[Concentration dependent]"
+
+    Shear Thinning Behavior:
+      Present: "[Yes/No]"
+      Scientific Notes: "[Placeholder]"
+
+  Thermal Properties:
+    Thermal Stability:
+      Value: "[Placeholder]"
+      Unit: "°C"
+
+    Glass Transition Temperature:
+      Value: "[Placeholder]"
+      Unit: "°C"
+
+    Melting Point:
+      Value: "[Placeholder]"
+      Unit: "°C"
+
+  Solubility:
+
+    Water:
+      Solubility: "[Highly Soluble / Soluble / Slightly Soluble / Insoluble]"
+
+    Organic Solvents:
+      Solubility: "[Placeholder]"
+
+  Storage:
+
+    Recommended Temperature:
+      Value: "[Placeholder]"
+      Unit: "°C"
+
+    Moisture Sensitivity:
+      "[Low / Medium / High]"
+
+    Light Sensitivity:
+      "[Low / Medium / High]"
+
+    Shelf Life:
+      Value: "[Placeholder]"
+      Unit: "Months"
+
+  Sterilization:
+
+    Compatible Methods:
+      - "[Placeholder]"
+
+    Not Recommended:
+      - "[Placeholder]"
+
+  Scientific Notes:
+    "[Additional scientific observations]"
+
+# Chemical Properties
+Chemical Properties:
+
+  General:
+
+    Charge:
+      Value: "[Placeholder]"
+      Notes: "[Placeholder]"
+
+    Ionic Nature:
+      Value: "[Placeholder]"
+
+    Polymer Type:
+      Value: "[Placeholder]"
+
+  Functional Groups:
+
+    Primary:
+      - "[Placeholder]"
+
+    Secondary:
+      - "[Placeholder]"
+
+  Acid Base Properties:
+
+    pKa:
+      Value: "[Placeholder]"
+
+    Recommended pH Range:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+
+  Hydration:
+
+    Water Absorption:
+      Value: "[Low / Medium / High]"
+
+    Hydrophilicity:
+      Value: "[Low / Medium / High]"
+
+    Hydrophobicity:
+      Value: "[Low / Medium / High]"
+
+  Stability:
+
+    Chemical Stability:
+      Value: "[Placeholder]"
+
+    Oxidation Sensitivity:
+      Value: "[Low / Medium / High]"
+
+    Hydrolysis Sensitivity:
+      Value: "[Low / Medium / High]"
+
+    Enzymatic Sensitivity:
+      Value: "[Placeholder]"
+
+  Crosslinking Behavior:
+
+    Crosslinkable:
+      Value: "[Yes / No]"
+
+    Crosslinking Mechanism:
+      "[Placeholder]"
+
+  Scientific Notes:
+    "[Placeholder]"
+
+# Safety Information
+Safety Information:
+  Sterility Required: "Yes (for in vivo applications)"
+  Sterile Preparation Recommended: "Yes"
+  Storage Hazard: "None (non-toxic)"
+  Hazard Classification: "Non-hazardous"
+  Handling Precautions: "Standard laboratory PPE (gloves, lab coat)"
+  Disposal Method: "Standard biological/chemical waste"
+  Laboratory Safety Notes: "Avoid inhalation of fine powder."
+
+# 3. Preparation Parameters
+Preparation Parameters:
+
+  Solution Preparation:
+
+    Recommended Concentration:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "% (w/v)"
+
+    Solvent:
+      Value: "[Placeholder]"
+
+    Dissolution Temperature:
+      Value: "[Placeholder]"
+      Unit: "°C"
+
+    Preparation Temperature:
+      Value: "[Placeholder]"
+      Unit: "°C"
+
+  Mixing:
+
+    Mixing Method:
+      Value: "[Magnetic Stirrer / Overhead Stirrer / Manual / Other]"
+
+    Mixing Speed:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "RPM"
+
+    Mixing Time:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "Hours"
+
+  Filtration:
+
+    Required:
+      Value: "[Yes / No]"
+
+    Filter Size:
+      Value: "[Placeholder]"
+      Unit: "µm"
+
+  Degassing:
+
+    Required:
+      Value: "[Yes / No]"
+
+    Method:
+      Value: "[Placeholder]"
+
+  Storage Before Printing:
+
+    Maximum Storage Time:
+      Value: "[Placeholder]"
+      Unit: "Hours"
+
+    Recommended Temperature:
+      Value: "[Placeholder]"
+      Unit: "°C"
+
+  Scientific Notes:
+    "[Placeholder]"
+
+# 4. Printing Properties
+Printing Properties:
+
+  Extrusion:
+
+    Printing Temperature:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "°C"
+
+    Nozzle Gauge:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "G"
+
+    Printing Pressure:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "kPa"
+
+    Printing Speed:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "mm/s"
+
+  Printability:
+
+    Shape Fidelity:
+      Value: "[Low / Medium / High]"
+
+    Filament Formation:
+      Value: "[Poor / Moderate / Good / Excellent]"
+
+    Layer Stability:
+      Value: "[Low / Medium / High]"
+
+    Shear Recovery:
+      Value: "[Low / Medium / High]"
+
+  Post Printing:
+
+    Immediate Crosslinking Required:
+      Value: "[Yes / No]"
+
+    Recommended Crosslinker:
+      Value: "[Placeholder]"
+
+    Post Processing:
+      Value: "[Placeholder]"
+
+  Printing Compatibility:
+
+    Extrusion Bioprinting:
+      Value: "[Yes / No]"
+
+    Inkjet Printing:
+      Value: "[Yes / No]"
+
+    Laser Assisted Printing:
+      Value: "[Yes / No]"
+
+    DLP/SLA Printing:
+      Value: "[Yes / No]"
+
+  Scientific Notes:
+    "[Placeholder]"
+
+# 5. Crosslinking Information
+Crosslinking Information:
+  Crosslinking Capability:
+    Crosslinkable:
+      Value: "[Yes / No]"
+    Crosslinking Type:
+      Value: "[Ionic / Thermal / Photo / Chemical / Enzymatic]"
+  Primary Crosslinker:
+    Name:
+      Value: "[Placeholder]"
+    Recommended Concentration:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "% (w/v)"
+  Crosslinking Conditions:
+    Temperature:
+      Value: "[Placeholder]"
+      Unit: "°C"
+    Time:
+      Minimum: "[Placeholder]"
+      Maximum: "[Placeholder]"
+      Unit: "minutes"
+    pH:
+      Value: "[Placeholder]"
+    Scientific Notes:
+      Value: "[Placeholder]"
+
+# 6. Biological Properties
+Biological Properties:
+  Biocompatibility:
+    Overall Rating:
+      Value: "[Excellent / Good / Moderate / Poor]"
+    ISO 10993 Status:
+      Value: "[Placeholder]"
+  Cell Interaction:
+    Cell Adhesion:
+      Value: "[Excellent / Good / Moderate / Poor]"
+    Cell Proliferation:
+      Value: "[Excellent / Good / Moderate / Poor]"
+    Cell Viability:
+      Value: "[Excellent / Good / Moderate / Poor]"
+  Biodegradation:
+    Biodegradable:
+      Value: "[Yes / No]"
+    Degradation Mechanism:
+      Value: "[Placeholder]"
+    Degradation Rate:
+      Value: "[Slow / Moderate / Fast]"
+  Immunological Response:
+    Immunogenicity:
+      Value: "[Low / Moderate / High]"
+    Cytotoxicity:
+      Value: "[None / Low / Moderate / High]"
+    Inflammatory Response:
+      Value: "[Low / Moderate / High]"
+  Bioactivity:
+    Supports Cell Encapsulation:
+      Value: "[Yes / No]"
+    Supports Tissue Regeneration:
+      Value: "[Yes / No]"
+    Growth Factor Binding:
+      Value: "[Low / Moderate / High]"
+  Scientific Notes:
+    "[Placeholder]"
+
+# 7. Mechanical Properties
+Mechanical Properties:
+  Elastic Properties:
+    Elastic Modulus:
+      Value: "[Placeholder]"
+      Unit: "kPa"
+    Youngs Modulus:
+      Value: "[Placeholder]"
+      Unit: "kPa"
+  Strength:
+    Tensile Strength:
+      Value: "[Placeholder]"
+      Unit: "kPa"
+    Compressive Strength:
+      Value: "[Placeholder]"
+      Unit: "kPa"
+  Rheology:
+    Shear Thinning:
+      Value: "[Yes / No]"
+    Yield Stress:
+      Value: "[Placeholder]"
+      Unit: "Pa"
+    Shape Fidelity:
+      Value: "[Low / Moderate / High]"
+  Stability:
+    Swelling Ratio:
+      Value: "[Placeholder]"
+    Structural Stability:
+      Value: "[Low / Moderate / High]"
+  Scientific Notes:
+    "[Placeholder]"
+# 8. Tissue Engineering Applications
+Tissue Engineering Applications:
+  Supported Tissues:
+    Bone:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+    Cartilage:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+    Skin:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+    Cardiac:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+    Neural:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+    Liver:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+    Lung:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+    Kidney:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+    Vascular:
+      Value: "[Excellent / Good / Moderate / Poor / Not Recommended]"
+  Specialized Applications:
+    Cell Encapsulation:
+      Value: "[Yes / No]"
+    Drug Delivery:
+      Value: "[Yes / No]"
+    Organoid Culture:
+      Value: "[Yes / No]"
+    Wound Healing:
+      Value: "[Yes / No]"
+    Injectable Hydrogel:
+      Value: "[Yes / No]"
+  Scientific Notes: >
+    [Placeholder]
+
+# 9. Compatibility
+Compatibility:
+  Compatible Biomaterials:
+    - Gelatin
+    - Pectin
+    - Nanocellulose
+    - GelMA
+  Incompatible Biomaterials:
+    - "[Placeholder]"
+  Common Formulations:
+    - Alginate + Gelatin (enhances cell adhesion)
+    - Alginate + Nanocellulose (enhances mechanical strength)
+  Synergistic Effects: Blending with gelatin provides RGD sites for cell attachment while maintaining structural fidelity.
+
+# 10. Advantages
+Advantages:
+  - Excellent biocompatibility
+  - Extremely fast and gentle gelation process
+  - Highly tunable mechanical properties by adjusting calcium concentration
+  - Commercially available and cost-effective
+
+# 11. Limitations
+Limitations:
+  - Poor cell adhesion alone
+  - Slow degradation in vivo
+  - Loss of mechanical stability over time in physiological buffers
+
+# AI Prediction Parameters
+AI Prediction Parameters:
+  Expected Printability: "[Placeholder]"
+  Expected Shape Fidelity: "[Placeholder]"
+  Expected Cell Viability: "[Placeholder]"
+  Expected Mechanical Strength: "[Placeholder]"
+  Expected Elasticity: "[Placeholder]"
+  Expected Swelling: "[Placeholder]"
+  Expected Degradation Rate: "[Placeholder]"
+  Expected Bioactivity: "[Placeholder]"
+  Expected Cost: "[Placeholder]"
+  Expected Difficulty of Printing: "[Placeholder]"
+  Expected Nozzle Clogging Risk: "[Placeholder]"
+  Expected Confidence Score: "[Placeholder]"
+
+# 12. Optimization Guidelines
+Optimization Guidelines:
+  If viscosity is low: Increase alginate concentration or blend with nanocellulose.
+  If shape fidelity is poor: Increase crosslinker concentration or pre-crosslink lightly before printing.
+  If clogging occurs: Decrease concentration, increase nozzle diameter, or improve dissolution.
+  If degradation is too fast: Use a stronger crosslinker (e.g., BaCl₂) or increase polymer concentration.
+  If degradation is too slow: Oxidize alginate or blend with rapidly degrading polymers (e.g., gelatin).
+
+# 13. Scientific References
+Scientific References:
+  Preparation References:
+    - Title: "[Placeholder Title]"
+      Authors: "[Placeholder Authors]"
+      Journal: "[Placeholder Journal]"
+      Year: "[Placeholder Year]"
+      DOI: "[Placeholder DOI]"
+      Evidence Level: "[Placeholder Evidence Level]"
+  Crosslinking References:
+    - Title: "[Placeholder Title]"
+      Authors: "[Placeholder Authors]"
+      Journal: "[Placeholder Journal]"
+      Year: "[Placeholder Year]"
+      DOI: "[Placeholder DOI]"
+      Evidence Level: "[Placeholder Evidence Level]"
+  Printing References:
+    - Title: "[Placeholder Title]"
+      Authors: "[Placeholder Authors]"
+      Journal: "[Placeholder Journal]"
+      Year: "[Placeholder Year]"
+      DOI: "[Placeholder DOI]"
+      Evidence Level: "[Placeholder Evidence Level]"
+  Mechanical Property References:
+    - Title: "[Placeholder Title]"
+      Authors: "[Placeholder Authors]"
+      Journal: "[Placeholder Journal]"
+      Year: "[Placeholder Year]"
+      DOI: "[Placeholder DOI]"
+      Evidence Level: "[Placeholder Evidence Level]"
+  Biological Property References:
+    - Title: "[Placeholder Title]"
+      Authors: "[Placeholder Authors]"
+      Journal: "[Placeholder Journal]"
+      Year: "[Placeholder Year]"
+      DOI: "[Placeholder DOI]"
+      Evidence Level: "[Placeholder Evidence Level]"
+  Application References:
+    - Title: "[Placeholder Title]"
+      Authors: "[Placeholder Authors]"
+      Journal: "[Placeholder Journal]"
+      Year: "[Placeholder Year]"
+      DOI: "[Placeholder DOI]"
+      Evidence Level: "[Placeholder Evidence Level]"

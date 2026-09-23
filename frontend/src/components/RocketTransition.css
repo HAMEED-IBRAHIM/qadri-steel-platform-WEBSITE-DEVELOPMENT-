@@ -1,0 +1,78 @@
+/* Rocket Transition - fixed overlay over everything */
+.rocket-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+/* The rocket image */
+.rocket-img {
+  position: absolute;
+  top: 50%;
+  width: 120px;
+  height: auto;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 20px rgba(255, 120, 50, 0.8));
+}
+
+/* Flame trail */
+.rocket-trail {
+  position: absolute;
+  top: 50%;
+  height: 8px;
+  border-radius: 10px;
+  transform: translateY(-50%);
+  background: linear-gradient(to right, transparent, rgba(255, 140, 0, 0.6), rgba(255, 60, 0, 0.4), transparent);
+  filter: blur(4px);
+}
+
+/* Flying RIGHT: rocket enters from left side, exits to the right */
+.direction-right .rocket-img {
+  animation: rocketFlyRight 1.2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  transform: translateY(-50%) rotate(45deg); /* tilted like launching top-right */
+}
+.direction-right .rocket-trail {
+  animation: trailRight 1.2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+/* Flying LEFT: rocket enters from right side, exits to the left */
+.direction-left .rocket-img {
+  animation: rocketFlyLeft 1.2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  transform: translateY(-50%) rotate(-135deg);
+}
+.direction-left .rocket-trail {
+  animation: trailLeft 1.2s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+@keyframes rocketFlyRight {
+  0%   { left: -180px; top: 55%; }
+  40%  { left: 35%;    top: 50%; opacity: 1; }
+  60%  { left: 50%;    top: 46%; opacity: 1; }
+  100% { left: 110vw;  top: 30%; opacity: 0.4; }
+}
+
+@keyframes rocketFlyLeft {
+  0%   { right: -180px; left: auto; top: 55%; }
+  40%  { left: 60%;     top: 50%; opacity: 1; }
+  60%  { left: 45%;     top: 46%; opacity: 1; }
+  100% { left: -20vw;   top: 30%; opacity: 0.4; }
+}
+
+@keyframes trailRight {
+  0%   { left: -300px; width: 0; opacity: 0;   }
+  40%  { left: 10%;    width: 200px; opacity: 0.8; }
+  80%  { left: 50%;    width: 120px; opacity: 0.5; }
+  100% { left: 100vw;  width: 0; opacity: 0;   }
+}
+
+@keyframes trailLeft {
+  0%   { right: -300px; left: auto; width: 0; opacity: 0;   }
+  40%  { left: auto; right: 10%; width: 200px; opacity: 0.8; }
+  80%  { left: auto; right: 50%; width: 120px; opacity: 0.5; }
+  100% { left: -100vw; width: 0; opacity: 0;   }
+}

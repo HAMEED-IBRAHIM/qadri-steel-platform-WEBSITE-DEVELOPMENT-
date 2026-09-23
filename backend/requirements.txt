@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+pydantic
+numpy
+pandas
+scikit-learn
+python-multipart
+reportlab
+
+passlib[bcrypt]
+bcrypt
+python-jose[cryptography]
+email-validator
+google-auth
+msal
+google-genai
