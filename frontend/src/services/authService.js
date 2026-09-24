@@ -17,6 +17,7 @@ export async function loginUser(email, password) {
   const data = await response.json();
   localStorage.setItem("token", data.access_token);
   localStorage.setItem("user", JSON.stringify(data.user));
+  localStorage.setItem("qst_role", "viewer");
   return data;
 }
 
@@ -71,6 +72,7 @@ export async function getCurrentUser() {
 export function logoutUser() {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
+  localStorage.removeItem("qst_role");
 }
 
 export function isAuthenticated() {
@@ -94,6 +96,7 @@ export async function googleOAuthLogin(token) {
   const data = await response.json();
   localStorage.setItem("token", data.access_token);
   localStorage.setItem("user", JSON.stringify(data.user));
+  localStorage.setItem("qst_role", "viewer");
   return data;
 }
 
@@ -114,5 +117,8 @@ export async function microsoftOAuthLogin(token) {
   const data = await response.json();
   localStorage.setItem("token", data.access_token);
   localStorage.setItem("user", JSON.stringify(data.user));
+  localStorage.setItem("qst_role", "viewer");
   return data;
 }
+
+
