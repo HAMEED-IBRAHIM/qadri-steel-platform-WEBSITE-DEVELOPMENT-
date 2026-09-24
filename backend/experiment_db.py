@@ -1,4 +1,5 @@
-import sqlite3
+import psycopg2
+import psycopg2.extras
 import json
 import os
 from typing import List, Dict, Any, Optional
@@ -6,14 +7,19 @@ from typing import List, Dict, Any, Optional
 DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), 'formulations.db'))
 
 def get_db_connection():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = psycopg2.connect(
+        host="aws-0-ap-southeast-2.pooler.supabase.com",
+        database="postgres",
+        user="postgres.otjguqzlgzmyctgnznbt",
+        password="Hameed7690#123",
+        port=6543
+    )
     return conn
 
 # Ensure experiments table exists (init_db will call this)
 def init_experiments_table():
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS experiments (
             id TEXT PRIMARY KEY,
@@ -46,7 +52,7 @@ def deserialize(val: Optional[str]) -> Any:
 
 def db_create_experiment(exp: Dict[str, Any]) -> Dict[str, Any]:
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(
         """
         INSERT INTO experiments (
@@ -76,7 +82,7 @@ def db_create_experiment(exp: Dict[str, Any]) -> Dict[str, Any]:
 
 def db_get_experiments() -> List[Dict[str, Any]]:
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute("SELECT * FROM experiments")
     rows = cursor.fetchall()
     conn.close()
@@ -84,8 +90,8 @@ def db_get_experiments() -> List[Dict[str, Any]]:
 
 def db_get_experiment_by_id(exp_id: str) -> Optional[Dict[str, Any]]:
     conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM experiments WHERE id = ?", (exp_id,))
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute("SELECT * FROM experiments WHERE id = %s", (exp_id,))
     row = cursor.fetchone()
     conn.close()
     if row:
@@ -96,7 +102,7 @@ def db_update_experiment(exp_id: str, updates: Dict[str, Any]) -> Optional[Dict[
     if not updates:
         return db_get_experiment_by_id(exp_id)
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     allowed = {
         'tissue_type', 'biomaterials', 'final_mixing', 'prediction_results',
         'compatibility_analysis', 'generated_protocol', 'user_notes', 'is_favorite'
@@ -123,14 +129,14 @@ def db_update_experiment(exp_id: str, updates: Dict[str, Any]) -> Optional[Dict[
 
 def db_delete_experiment(exp_id: str) -> bool:
     conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM experiments WHERE id = ?", (exp_id,))
-    changed = conn.total_changes > 0
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute("DELETE FROM experiments WHERE id = %s", (exp_id,))
+    changed = cursor.rowcount > 0
     conn.commit()
     conn.close()
     return changed
 
-def row_to_dict(row: sqlite3.Row) -> Dict[str, Any]:
+def row_to_dict(row: psycopg2.extras.DictRow) -> Dict[str, Any]:
     d = dict(row)
     # deserialize JSON fields
     for field in ['biomaterials', 'final_mixing', 'prediction_results', 'compatibility_analysis']:

@@ -1,4 +1,5 @@
-import sqlite3
+import psycopg2
+import psycopg2.extras
 import json
 import os
 from typing import List, Dict, Any, Optional
@@ -7,13 +8,18 @@ from experiment_db import init_experiments_table
 DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), 'formulations.db'))
 
 def get_db_connection():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
+    conn = psycopg2.connect(
+        host="aws-0-ap-southeast-2.pooler.supabase.com",
+        database="postgres",
+        user="postgres.otjguqzlgzmyctgnznbt",
+        password="Hameed7690#123",
+        port=6543
+    )
     return conn
 
 def init_db():
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS projects (
             id TEXT PRIMARY KEY,
@@ -44,19 +50,6 @@ def init_db():
             reset_token_expiry TEXT DEFAULT NULL
         )
     """)
-    # Perform migration for older schemas
-    cursor.execute("PRAGMA table_info(users)")
-    existing_columns = [row[1] for row in cursor.fetchall()]
-    if "provider" not in existing_columns:
-        cursor.execute("ALTER TABLE users ADD COLUMN provider TEXT")
-    if "provider_id" not in existing_columns:
-        cursor.execute("ALTER TABLE users ADD COLUMN provider_id TEXT")
-    if "profile_picture" not in existing_columns:
-        cursor.execute("ALTER TABLE users ADD COLUMN profile_picture TEXT")
-    if "reset_token" not in existing_columns:
-        cursor.execute("ALTER TABLE users ADD COLUMN reset_token TEXT DEFAULT NULL")
-    if "reset_token_expiry" not in existing_columns:
-        cursor.execute("ALTER TABLE users ADD COLUMN reset_token_expiry TEXT DEFAULT NULL")
     conn.commit()
     conn.close()
     # Initialize experiments table
@@ -77,7 +70,7 @@ def deserialize_field(val: Optional[str]) -> Any:
     except Exception:
         return val
 
-def row_to_dict(row: sqlite3.Row) -> Dict[str, Any]:
+def row_to_dict(row: psycopg2.extras.DictRow) -> Dict[str, Any]:
     d = dict(row)
     d['biomaterial_formulation'] = deserialize_field(d.get('biomaterial_formulation'))
     d['final_mixing_parameters'] = deserialize_field(d.get('final_mixing_parameters'))
@@ -87,7 +80,7 @@ def row_to_dict(row: sqlite3.Row) -> Dict[str, Any]:
 
 def db_create_project(project: Dict[str, Any]) -> Dict[str, Any]:
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(
         """
         INSERT INTO projects (
@@ -117,7 +110,7 @@ def db_create_project(project: Dict[str, Any]) -> Dict[str, Any]:
 
 def db_get_projects() -> List[Dict[str, Any]]:
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute("SELECT * FROM projects")
     rows = cursor.fetchall()
     conn.close()
@@ -125,8 +118,8 @@ def db_get_projects() -> List[Dict[str, Any]]:
 
 def db_get_project_by_id(project_id: str) -> Optional[Dict[str, Any]]:
     conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM projects WHERE id = ?", (project_id,))
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute("SELECT * FROM projects WHERE id = %s", (project_id,))
     row = cursor.fetchone()
     conn.close()
     if row:
@@ -135,7 +128,7 @@ def db_get_project_by_id(project_id: str) -> Optional[Dict[str, Any]]:
 
 def db_update_project(project_id: str, updates: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     
     # Select columns to build dynamic UPDATE statement
     allowed_columns = {
@@ -171,16 +164,16 @@ def db_update_project(project_id: str, updates: Dict[str, Any]) -> Optional[Dict
 
 def db_delete_project(project_id: str) -> bool:
     conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM projects WHERE id = ?", (project_id,))
-    changes = conn.total_changes
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute("DELETE FROM projects WHERE id = %s", (project_id,))
+    changes = cursor.rowcount
     conn.commit()
     conn.close()
     return changes > 0
 
 def db_create_user(user: Dict[str, Any]) -> Dict[str, Any]:
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(
         """
         INSERT INTO users (
@@ -215,8 +208,8 @@ def db_create_user(user: Dict[str, Any]) -> Dict[str, Any]:
 
 def db_get_user_by_id(user_id: str) -> Optional[Dict[str, Any]]:
     conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT id, name, email, provider, provider_id, profile_picture, created_at, last_login, reset_token, reset_token_expiry FROM users WHERE id = ?", (user_id,))
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute("SELECT id, name, email, provider, provider_id, profile_picture, created_at, last_login, reset_token, reset_token_expiry FROM users WHERE id = %s", (user_id,))
     row = cursor.fetchone()
     conn.close()
     if row:
@@ -227,9 +220,9 @@ def db_get_user_by_email(email: str) -> Optional[Dict[str, Any]]:
     if not email:
         return None
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(
-        "SELECT id, name, email, provider, provider_id, profile_picture, password, created_at, last_login, reset_token, reset_token_expiry, role, institution, department, research_interests, bio, location, website, phone FROM users WHERE email = ? COLLATE NOCASE",
+        "SELECT id, name, email, provider, provider_id, profile_picture, password, created_at, last_login, reset_token, reset_token_expiry, role, institution, department, research_interests, bio, location, website, phone FROM users WHERE email ILIKE %s",
         (email.strip(),)
     )
     row = cursor.fetchone()
@@ -240,9 +233,9 @@ def db_get_user_by_email(email: str) -> Optional[Dict[str, Any]]:
 
 def db_update_user_last_login(user_id: str, timestamp: str):
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(
-        "UPDATE users SET last_login = ? WHERE id = ?",
+        "UPDATE users SET last_login = %s WHERE id = %s",
         (timestamp, user_id)
     )
     conn.commit()
@@ -252,9 +245,9 @@ def db_update_user_reset_token(email: str, reset_token: Optional[str], reset_tok
     if not email:
         return False
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(
-        "UPDATE users SET reset_token = ?, reset_token_expiry = ? WHERE email = ? COLLATE NOCASE",
+        "UPDATE users SET reset_token = %s, reset_token_expiry = %s WHERE email ILIKE %s",
         (reset_token, reset_token_expiry, email.strip())
     )
     changes = cursor.rowcount
@@ -264,9 +257,9 @@ def db_update_user_reset_token(email: str, reset_token: Optional[str], reset_tok
 
 def db_get_user_by_reset_token(reset_token: str) -> Optional[Dict[str, Any]]:
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(
-        "SELECT id, name, email, provider, provider_id, profile_picture, created_at, last_login, reset_token, reset_token_expiry FROM users WHERE reset_token = ?",
+        "SELECT id, name, email, provider, provider_id, profile_picture, created_at, last_login, reset_token, reset_token_expiry FROM users WHERE reset_token = %s",
         (reset_token,)
     )
     row = cursor.fetchone()
@@ -277,9 +270,9 @@ def db_get_user_by_reset_token(reset_token: str) -> Optional[Dict[str, Any]]:
 
 def db_update_user_password(user_id: str, hashed_password: str) -> bool:
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(
-        "UPDATE users SET password = ?, reset_token = NULL, reset_token_expiry = NULL WHERE id = ?",
+        "UPDATE users SET password = %s, reset_token = NULL, reset_token_expiry = NULL WHERE id = %s",
         (hashed_password, user_id)
     )
     changes = cursor.rowcount
@@ -299,7 +292,7 @@ def db_update_user_profile(user_id: str, profile_data: dict) -> Optional[dict]:
         return db_get_user_by_id(user_id)
     params.append(user_id)
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute(f"UPDATE users SET {', '.join(updates)} WHERE id = ?", tuple(params))
     conn.commit()
     conn.close()

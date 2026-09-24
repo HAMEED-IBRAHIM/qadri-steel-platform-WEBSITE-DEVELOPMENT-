@@ -536,10 +536,17 @@ app.include_router(product_router)
 
 @app.get('/api/products')
 def get_all_products():
-    import sqlite3
-    conn = sqlite3.connect('formulations.db')
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    import psycopg2
+import psycopg2.extras
+    conn = psycopg2.connect(
+        host="aws-0-ap-southeast-2.pooler.supabase.com",
+        database="postgres",
+        user="postgres.otjguqzlgzmyctgnznbt",
+        password="Hameed7690#123",
+        port=6543
+    )
+    
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute('SELECT * FROM products')
     rows = cursor.fetchall()
     conn.close()
@@ -548,10 +555,17 @@ def get_all_products():
 
 @app.get('/products')
 def get_products_direct():
-    import sqlite3
-    conn = sqlite3.connect('formulations.db')
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    import psycopg2
+import psycopg2.extras
+    conn = psycopg2.connect(
+        host="aws-0-ap-southeast-2.pooler.supabase.com",
+        database="postgres",
+        user="postgres.otjguqzlgzmyctgnznbt",
+        password="Hameed7690#123",
+        port=6543
+    )
+    
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute('SELECT * FROM products')
     rows = cursor.fetchall()
     conn.close()

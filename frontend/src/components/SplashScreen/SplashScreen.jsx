@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './SplashScreen.css';
 
 const STATUS_MESSAGES = [
-    "Initializing AI Workspace...",
-    "Loading AI Prediction Engine...",
-    "Connecting Biomaterial Knowledge Base...",
-    "Preparing Personalized Dashboard...",
-    "Loading Research Environment...",
+    "Initializing Qadri Steel Portal...",
+    "Loading Live Market Prices...",
+    "Connecting to Inventory Database...",
+    "Preparing Management Dashboard...",
+    "Loading Enterprise Environment...",
     "Finalizing Workspace..."
 ];
 
@@ -64,7 +64,7 @@ const SplashScreen = ({ onDone }) => {
             <div className="splash-center">
                 {/* Brand name */}
                 <h1 className="splash-brand">Qadri Steel & Tubes</h1>
-                <p className="splash-subtitle">Premium Research Workspace</p>
+                <p className="splash-subtitle">Enterprise Trading Platform</p>
 
                 {/* Animated progress bar container */}
                 <div className="modern-progress-container">

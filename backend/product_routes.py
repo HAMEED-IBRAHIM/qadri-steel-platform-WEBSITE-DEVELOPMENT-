@@ -1,20 +1,26 @@
 
 from fastapi import APIRouter, HTTPException
-import sqlite3
+import psycopg2
+import psycopg2.extras
 from typing import List, Dict, Any
 
 router = APIRouter(prefix="/products", tags=["Products"])
 
 def get_db_connection():
-    conn = sqlite3.connect("formulations.db")
-    conn.row_factory = sqlite3.Row
+    conn = psycopg2.connect(
+        host="aws-0-ap-southeast-2.pooler.supabase.com",
+        database="postgres",
+        user="postgres.otjguqzlgzmyctgnznbt",
+        password="Hameed7690#123",
+        port=6543
+    )
     return conn
 
 @router.get("/")
 def get_products():
     try:
         conn = get_db_connection()
-        cursor = conn.cursor()
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cursor.execute("SELECT * FROM products")
         rows = cursor.fetchall()
         conn.close()
@@ -26,8 +32,8 @@ def get_products():
 def get_product(product_id: str):
     try:
         conn = get_db_connection()
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM products WHERE id = ?", (product_id,))
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cursor.execute("SELECT * FROM products WHERE id = %s", (product_id,))
         row = cursor.fetchone()
         conn.close()
         if not row:
