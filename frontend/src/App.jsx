@@ -46,17 +46,21 @@ function App() {
 
   if (appInitializing) {
     return (
-      <div style={{ display: 'flex', height: '100vh', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0f172a', color: '#38bdf8', fontFamily: 'Inter, sans-serif' }}>
-        <div style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '28px', marginBottom: '16px', fontWeight: 'bold' }}>🧬 Qadri Steel & Tubes</h2>
-          <div className="session-loader" style={{ border: '4px solid rgba(56, 189, 248, 0.1)', borderTop: '4px solid #38bdf8', borderRadius: '50%', width: '40px', height: '40px', animation: 'spin 1s linear infinite', margin: '0 auto 16px' }}></div>
+      <div style={{ position: 'relative', width: '100vw', height: '100vh', backgroundColor: '#000', overflow: 'hidden' }}>
+        <img 
+          src="/loading_banner.jpg" 
+          alt="Loading Qadri Steel..." 
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: '0.9' }} 
+        />
+        <div style={{ position: 'absolute', bottom: '40px', left: '0', right: '0', textAlign: 'center', zIndex: 10 }}>
+          <div className="session-loader" style={{ border: '4px solid rgba(255, 255, 255, 0.2)', borderTop: '4px solid #fff', borderRadius: '50%', width: '40px', height: '40px', animation: 'spin 1s linear infinite', margin: '0 auto 10px auto' }}></div>
           <style>{`
             @keyframes spin {
               0% { transform: rotate(0deg); }
               100% { transform: rotate(360deg); }
             }
           `}</style>
-          <p style={{ color: '#94a3b8' }}>Loading Qadri Steel & Tubes...</p>
+          <p style={{ color: '#fff', fontSize: '14px', letterSpacing: '2px', fontWeight: '500', margin: 0, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>INITIALIZING DATABASE...</p>
         </div>
       </div>
     );
