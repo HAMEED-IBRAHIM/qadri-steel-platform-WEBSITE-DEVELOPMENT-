@@ -537,7 +537,7 @@ app.include_router(product_router)
 @app.get('/api/products')
 def get_all_products():
     import psycopg2
-import psycopg2.extras
+    import psycopg2.extras
     conn = psycopg2.connect(
         host="aws-0-ap-southeast-2.pooler.supabase.com",
         database="postgres",
@@ -556,7 +556,7 @@ import psycopg2.extras
 @app.get('/products')
 def get_products_direct():
     import psycopg2
-import psycopg2.extras
+    import psycopg2.extras
     conn = psycopg2.connect(
         host="aws-0-ap-southeast-2.pooler.supabase.com",
         database="postgres",
