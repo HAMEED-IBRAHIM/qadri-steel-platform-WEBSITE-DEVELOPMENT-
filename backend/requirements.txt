@@ -16,3 +16,4 @@ msal
 google-genai
 psycopg2-binary
 pyyaml
+python-dotenv
