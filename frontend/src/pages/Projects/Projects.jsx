@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaPlus, FaSearch, FaEye, FaTrash } from 'react-icons/fa';
+import { useRole } from '../../context/RoleContext';
 import './Projects.css';
 
 const initialOrders = [
@@ -11,6 +12,7 @@ const initialOrders = [
 ];
 
 const Orders = () => {
+  const { isManager } = useRole();
   const [orders, setOrders] = useState(initialOrders);
   const [search, setSearch] = useState('');
   const [filterStatus, setFilterStatus] = useState('All');
@@ -113,7 +115,7 @@ const Orders = () => {
             <span className="order-date">{o.date}</span>
             <span className={`order-badge ${statusColors[o.status]}`}>{o.status}</span>
             <span className={`order-badge ${paymentColors[o.payment]}`}>{o.payment}</span>
-            <span className="order-actions"><button onClick={(e) => deleteOrder(e, o.id)} style={{background:"none", border:"none", color:"#ef4444", cursor:"pointer", padding:"4px"}}><FaTrash/></button></span>
+            <span className="order-actions">{isManager && <button onClick={(e) => deleteOrder(e, o.id)} style={{background:"none", border:"none", color:"#ef4444", cursor:"pointer", padding:"4px"}}><FaTrash/></button>}</span>
           </div>
         ))}
         {filtered.length === 0 && <div className="empty-text">No orders found.</div>}
@@ -141,3 +143,5 @@ const Orders = () => {
 };
 
 export default Orders;
+
+

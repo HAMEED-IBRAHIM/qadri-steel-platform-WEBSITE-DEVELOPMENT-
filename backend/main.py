@@ -604,6 +604,7 @@ def get_pg():
 
 @app.get('/api/stock-register')
 def get_stock_entries():
+    import psycopg2, psycopg2.extras
     conn = get_pg()
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cursor.execute('SELECT * FROM stock_register ORDER BY created_at ASC')
@@ -613,6 +614,7 @@ def get_stock_entries():
 
 @app.post('/api/stock-register')
 def add_stock_entry(entry: StockEntry):
+    import psycopg2, psycopg2.extras
     conn = get_pg()
     cursor = conn.cursor()
     cursor.execute(
@@ -626,6 +628,7 @@ def add_stock_entry(entry: StockEntry):
 
 @app.put('/api/stock-register/{entry_id}')
 def update_stock_entry(entry_id: int, entry: StockEntry):
+    import psycopg2, psycopg2.extras
     conn = get_pg()
     cursor = conn.cursor()
     cursor.execute(
@@ -638,6 +641,7 @@ def update_stock_entry(entry_id: int, entry: StockEntry):
 
 @app.delete('/api/stock-register/{entry_id}')
 def delete_stock_entry(entry_id: int):
+    import psycopg2, psycopg2.extras
     conn = get_pg()
     cursor = conn.cursor()
     cursor.execute('DELETE FROM stock_register WHERE id=%s', (entry_id,))
@@ -647,9 +651,11 @@ def delete_stock_entry(entry_id: int):
 
 @app.delete('/api/stock-register')
 def clear_all_stock():
+    import psycopg2, psycopg2.extras
     conn = get_pg()
     cursor = conn.cursor()
     cursor.execute('DELETE FROM stock_register')
     conn.commit()
     conn.close()
     return {"cleared": True}
+
