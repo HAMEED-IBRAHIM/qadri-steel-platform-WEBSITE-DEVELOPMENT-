@@ -13,4 +13,5 @@ python-jose[cryptography]
 email-validator
 google-auth
 msal
-google-genaipsycopg2-binary
+google-genai
+psycopg2-binary
