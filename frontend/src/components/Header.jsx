@@ -6,13 +6,14 @@ import {
   FaUserCircle,
   FaChevronDown,
   FaUserShield,
-  FaEye
+  FaEye,
+  FaBars
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../services/authService";
 import { useRole } from "../context/RoleContext";
 
-function Header() {
+function Header({ onMenuClick }) {
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -37,6 +38,12 @@ function Header() {
   return (
     <header className="header">
       <div className="header-left">
+        {/* Mobile hamburger menu button */}
+        {onMenuClick && (
+          <button className="mobile-menu-btn" onClick={onMenuClick}>
+            <FaBars />
+          </button>
+        )}
         <div className="search-box">
           <FaSearch className="search-icon" />
           <input

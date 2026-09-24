@@ -99,3 +99,18 @@
     padding: 1rem;
   }
 }
+
+
+/* Mobile Responsive Fixes */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0 !important;
+    width: 100vw;
+  }
+  .workspace {
+    padding: 1rem !important;
+  }
+  .app-layout {
+    flex-direction: column;
+  }
+}

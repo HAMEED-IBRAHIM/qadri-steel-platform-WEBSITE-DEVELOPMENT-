@@ -59,7 +59,7 @@ app = FastAPI(
     description="Scientific Qadri Steel & Tubes Prediction Engine",
 )
 
-app.include_router(auth_router, prefix="/auth")
+app.include_router(auth_router)
 app.include_router(product_router)
 
 # CORS Configuration
@@ -576,3 +576,80 @@ def get_products_direct():
     conn.close()
     return [dict(row) for row in rows]
 
+
+
+# ============================================================
+# STOCK REGISTER API (Manager-only routes)
+# ============================================================
+from pydantic import BaseModel
+from typing import Optional
+
+class StockEntry(BaseModel):
+    size: Optional[str] = ""
+    stock: Optional[str] = ""
+    sales: Optional[str] = ""
+    date: Optional[str] = ""
+
+def get_pg():
+    import psycopg2
+    import psycopg2.extras
+    return psycopg2.connect(
+        host="aws-0-ap-southeast-2.pooler.supabase.com",
+        database="postgres",
+        user="postgres.otjguqzlgzmyctgnznbt",
+        password="Hameed7690#123",
+        port=6543,
+        sslmode="require"
+    )
+
+@app.get('/api/stock-register')
+def get_stock_entries():
+    conn = get_pg()
+    cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    cursor.execute('SELECT * FROM stock_register ORDER BY created_at ASC')
+    rows = cursor.fetchall()
+    conn.close()
+    return [dict(row) for row in rows]
+
+@app.post('/api/stock-register')
+def add_stock_entry(entry: StockEntry):
+    conn = get_pg()
+    cursor = conn.cursor()
+    cursor.execute(
+        'INSERT INTO stock_register (size, stock, sales, date) VALUES (%s, %s, %s, %s) RETURNING id',
+        (entry.size, entry.stock, entry.sales, entry.date)
+    )
+    new_id = cursor.fetchone()[0]
+    conn.commit()
+    conn.close()
+    return {"id": new_id, **entry.dict()}
+
+@app.put('/api/stock-register/{entry_id}')
+def update_stock_entry(entry_id: int, entry: StockEntry):
+    conn = get_pg()
+    cursor = conn.cursor()
+    cursor.execute(
+        'UPDATE stock_register SET size=%s, stock=%s, sales=%s, date=%s WHERE id=%s',
+        (entry.size, entry.stock, entry.sales, entry.date, entry_id)
+    )
+    conn.commit()
+    conn.close()
+    return {"id": entry_id, **entry.dict()}
+
+@app.delete('/api/stock-register/{entry_id}')
+def delete_stock_entry(entry_id: int):
+    conn = get_pg()
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM stock_register WHERE id=%s', (entry_id,))
+    conn.commit()
+    conn.close()
+    return {"deleted": entry_id}
+
+@app.delete('/api/stock-register')
+def clear_all_stock():
+    conn = get_pg()
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM stock_register')
+    conn.commit()
+    conn.close()
+    return {"cleared": True}

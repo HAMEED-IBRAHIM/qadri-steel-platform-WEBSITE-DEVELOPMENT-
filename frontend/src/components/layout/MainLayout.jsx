@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../Sidebar';
 import Header from '../Header';
 import { Outlet } from 'react-router-dom';
@@ -10,6 +10,8 @@ import ToastProvider from '../Toast/Toast';
 import GlobalInquiryModal from '../GlobalInquiryModal';
 
 const MainLayout = ({ children }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="app-layout">
       {/* Global: Rocket flies on tab switch */}
@@ -24,9 +26,18 @@ const MainLayout = ({ children }) => {
       {/* Global: Scroll to top */}
       <ScrollToTop />
 
-      <Sidebar />
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div 
+          style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.5)', zIndex: 150 }}
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       <div className="main-content">
-        <Header />
+        <Header onMenuClick={() => setSidebarOpen(true)} />
         {/* Steel price ticker below header */}
         <PriceTicker />
         <div className="workspace">
