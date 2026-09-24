@@ -51,7 +51,7 @@ from schemas.experiment import (
     ExperimentRead,
 )
 
-init_db()
+# init_db()
 
 app = FastAPI(
     title="Qadri Steel & Tubes API",
