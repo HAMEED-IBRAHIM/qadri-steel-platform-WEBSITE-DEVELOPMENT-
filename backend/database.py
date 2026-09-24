@@ -13,7 +13,8 @@ def get_db_connection():
         database="postgres",
         user="postgres.otjguqzlgzmyctgnznbt",
         password="Hameed7690#123",
-        port=6543
+        port=6543,
+        sslmode="require"
     )
     return conn
 

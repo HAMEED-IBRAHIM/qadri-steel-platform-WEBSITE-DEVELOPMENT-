@@ -546,7 +546,8 @@ def get_all_products():
         database="postgres",
         user="postgres.otjguqzlgzmyctgnznbt",
         password="Hameed7690#123",
-        port=6543
+        port=6543,
+        sslmode="require"
     )
     
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -565,7 +566,8 @@ def get_products_direct():
         database="postgres",
         user="postgres.otjguqzlgzmyctgnznbt",
         password="Hameed7690#123",
-        port=6543
+        port=6543,
+        sslmode="require"
     )
     
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
