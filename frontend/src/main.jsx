@@ -57,7 +57,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { PublicClientApplication } from '@azure/msal-browser';
 import { MsalProvider } from '@azure/msal-react';
 
-const GOOGLE_CLIENT_ID = "763375667270-mf5mefl5t1u2rhie1oaia0e232eulcbr.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "773720962928-pjmdrreum8ttkn2ovdq7bgn6gieac262.apps.googleusercontent.com";
 
 const msalConfig = {
   auth: {
