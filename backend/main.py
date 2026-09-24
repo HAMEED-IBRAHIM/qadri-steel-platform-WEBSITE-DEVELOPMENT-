@@ -68,6 +68,9 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "https://qadri-steel-platform-website-develo.vercel.app",
+        "https://qadri-steel-platform-website-development-c2tvipqdz.vercel.app",
+        "https://qadri-steel-platform-website-d-git-3c587c-qadri-steel-and-tubes.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
