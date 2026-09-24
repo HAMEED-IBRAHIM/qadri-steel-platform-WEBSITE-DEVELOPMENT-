@@ -88,7 +88,7 @@ def db_create_project(project: Dict[str, Any]) -> Dict[str, Any]:
             biomaterial_formulation, final_mixing_parameters, 
             prediction_results, generated_protocol, 
             created_date, last_modified_date, status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """,
         (
             project['id'],
@@ -143,7 +143,7 @@ def db_update_project(project_id: str, updates: Dict[str, Any]) -> Optional[Dict
     
     for key, val in updates.items():
         if key in allowed_columns:
-            query_parts.append(f"{key} = ?")
+            query_parts.append(f"{key} = %s")
             if key in ('biomaterial_formulation', 'final_mixing_parameters', 'prediction_results', 'generated_protocol'):
                 params.append(serialize_field(val))
             else:
@@ -155,7 +155,7 @@ def db_update_project(project_id: str, updates: Dict[str, Any]) -> Optional[Dict
         
     params.append(project_id)
     cursor.execute(
-        f"UPDATE projects SET {', '.join(query_parts)} WHERE id = ?",
+        f"UPDATE projects SET {', '.join(query_parts)} WHERE id = %s",
         tuple(params)
     )
     conn.commit()
@@ -178,7 +178,7 @@ def db_create_user(user: Dict[str, Any]) -> Dict[str, Any]:
         """
         INSERT INTO users (
             id, name, email, password, provider, provider_id, profile_picture, created_at, last_login, reset_token, reset_token_expiry, role, institution, department, research_interests, bio, location, website, phone
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """,
         (
             user['id'],
@@ -286,14 +286,14 @@ def db_update_user_profile(user_id: str, profile_data: dict) -> Optional[dict]:
     params = []
     for key, val in profile_data.items():
         if key in allowed_columns:
-            updates.append(f"{key} = ?")
+            updates.append(f"{key} = %s")
             params.append(val)
     if not updates:
         return db_get_user_by_id(user_id)
     params.append(user_id)
     conn = get_db_connection()
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    cursor.execute(f"UPDATE users SET {', '.join(updates)} WHERE id = ?", tuple(params))
+    cursor.execute(f"UPDATE users SET {', '.join(updates)} WHERE id = %s", tuple(params))
     conn.commit()
     conn.close()
     return db_get_user_by_id(user_id)
