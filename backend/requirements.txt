@@ -15,3 +15,4 @@ google-auth
 msal
 google-genai
 psycopg2-binary
+pyyaml
