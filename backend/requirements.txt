@@ -1,12 +1,11 @@
 fastapi
 uvicorn
-pydantic
+pydantic[email]
 numpy
 pandas
 scikit-learn
 python-multipart
 reportlab
-
 passlib[bcrypt]
 bcrypt
 python-jose[cryptography]
@@ -17,3 +16,5 @@ google-genai
 psycopg2-binary
 pyyaml
 python-dotenv
+requests
+httpx
