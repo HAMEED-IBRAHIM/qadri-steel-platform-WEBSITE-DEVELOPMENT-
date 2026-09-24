@@ -59,7 +59,7 @@ app = FastAPI(
     description="Scientific Qadri Steel & Tubes Prediction Engine",
 )
 
-app.include_router(auth_router)
+app.include_router(auth_router, prefix="/auth")
 app.include_router(product_router)
 
 # CORS Configuration
