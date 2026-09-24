@@ -11,7 +11,8 @@ import {
   FaUserCircle,
   FaRobot,
   FaUserShield,
-  FaEye
+  FaEye,
+  FaTable
 } from 'react-icons/fa';
 import { logoutUser } from '../services/authService';
 import { useRole } from '../context/RoleContext';
@@ -71,6 +72,14 @@ const Sidebar = ({ isOpen, onClose }) => {
           <NavLink to="/quotes" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
             <FaFileInvoiceDollar className="nav-icon" />
             <span>Quotations <span className="manager-pill">M</span></span>
+          </NavLink>
+        )}
+
+        {/* Stock Register - Manager only */}
+        {isManager && (
+          <NavLink to="/stock-register" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
+            <FaTable className="nav-icon" />
+            <span>Stock Register <span className="manager-pill">M</span></span>
           </NavLink>
         )}
 
