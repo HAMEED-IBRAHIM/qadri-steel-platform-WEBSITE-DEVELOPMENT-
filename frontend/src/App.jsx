@@ -14,6 +14,7 @@ import Designer from "./pages/Designer/Designer";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Predictions from "./pages/Predictions/Predictions";
 import Database from "./pages/Database/Database";
+import Explore from "./pages/Explore/Explore";
 import Literature from "./pages/Literature/Literature";
 import Experiments from "./pages/Experiments/Experiments";
 import Assistant from "./pages/Assistant/Assistant";
@@ -90,6 +91,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/catalog" element={<Database />} />
+              <Route path="/explore" element={<Explore />} />
               <Route path="/quotes" element={<Designer />} />
               <Route path="/orders" element={<Projects />} />
               <Route path="/brands" element={<Literature />} />

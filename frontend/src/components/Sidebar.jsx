@@ -12,7 +12,8 @@ import {
   FaRobot,
   FaUserShield,
   FaEye,
-  FaTable
+  FaTable,
+  FaGlobe
 } from 'react-icons/fa';
 import { logoutUser } from '../services/authService';
 import { useRole } from '../context/RoleContext';
@@ -86,6 +87,11 @@ const Sidebar = ({ isOpen, onClose }) => {
         <NavLink to="/orders" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
           <FaClipboardList className="nav-icon" />
           <span>Orders</span>
+        </NavLink>
+
+                <NavLink to="/explore" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
+          <FaGlobe className="nav-icon" />
+          <span>Explore QS</span>
         </NavLink>
 
         <div className="nav-section-label">Business</div>

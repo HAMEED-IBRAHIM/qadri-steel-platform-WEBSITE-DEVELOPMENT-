@@ -217,3 +217,53 @@
 @media (max-width: 900px) {
   .database-content { grid-template-columns: 1fr; }
 }
+
+
+/* Manager Controls */
+.manager-edit-btn {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.manager-edit-btn:hover { background: #bfdbfe; }
+.manager-del-btn {
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.manager-del-btn:hover { background: #fecaca; }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.modal-content h2 { margin-top: 0; color: #1e293b; }
+.add-form-grid .form-group { display: flex; flex-direction: column; gap: 5px; }
+.add-form-grid label { font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; }
