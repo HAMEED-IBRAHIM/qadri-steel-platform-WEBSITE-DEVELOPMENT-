@@ -12,7 +12,7 @@ const Quotations = () => {
   const [savedQuotes, setSavedQuotes] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8001/products')
+    fetch('https://qadri-steel-and-tubes.onrender.com/products')
       .then(r => r.json())
       .then(data => { if (Array.isArray(data)) setProducts(data); })
       .catch(() => {});

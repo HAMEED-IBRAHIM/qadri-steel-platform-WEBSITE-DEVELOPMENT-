@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8001";
+const API_URL = "https://qadri-steel-and-tubes.onrender.com";
 
 // Helper to convert backend project structure to frontend format
 export function mapProjectToFrontend(bp) {

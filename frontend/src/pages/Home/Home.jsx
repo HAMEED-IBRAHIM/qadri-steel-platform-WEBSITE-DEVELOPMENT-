@@ -54,7 +54,7 @@ const Home = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8001/products')
+    fetch('https://qadri-steel-and-tubes.onrender.com/products')
       .then(r => r.json())
       .then(d => { if (Array.isArray(d)) setProducts(d); })
       .catch(() => {});

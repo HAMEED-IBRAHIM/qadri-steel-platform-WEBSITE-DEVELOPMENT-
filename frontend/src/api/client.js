@@ -4,7 +4,7 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "http://127.0.0.1:8001",
+  baseURL: "https://qadri-steel-and-tubes.onrender.com",
   timeout: 10000, // 10 seconds timeout
   headers: {
     "Content-Type": "application/json",

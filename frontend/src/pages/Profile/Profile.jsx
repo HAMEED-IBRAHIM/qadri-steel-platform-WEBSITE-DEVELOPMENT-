@@ -33,7 +33,7 @@ const Profile = () => {
           return;
         }
 
-        const response = await fetch('http://127.0.0.1:8001/auth/me', {
+        const response = await fetch('https://qadri-steel-and-tubes.onrender.com/auth/me', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -76,7 +76,7 @@ const Profile = () => {
         phone: profile.phone
       };
 
-      const response = await fetch('http://127.0.0.1:8001/auth/me', {
+      const response = await fetch('https://qadri-steel-and-tubes.onrender.com/auth/me', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

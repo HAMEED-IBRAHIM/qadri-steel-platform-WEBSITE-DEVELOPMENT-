@@ -51,7 +51,7 @@ const KnowledgeBase = () => {
 
     const fetchLogs = async () => {
         try {
-            const res = await fetch('http://localhost:8001/migration/logs');
+            const res = await fetch('https://qadri-steel-and-tubes.onrender.com/migration/logs');
             const data = await res.json();
             if (res.ok) setLogs(data.logs || []);
         } catch (err) {
@@ -61,7 +61,7 @@ const KnowledgeBase = () => {
 
     const fetchBackups = async () => {
         try {
-            const res = await fetch('http://localhost:8001/migration/backups');
+            const res = await fetch('https://qadri-steel-and-tubes.onrender.com/migration/backups');
             const data = await res.json();
             if (res.ok) {
                 setBackups(data.backups || []);
@@ -91,7 +91,7 @@ const KnowledgeBase = () => {
         setGenNotification(null);
 
         try {
-            const response = await fetch('http://localhost:8001/materials/generate', {
+            const response = await fetch('https://qadri-steel-and-tubes.onrender.com/materials/generate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
@@ -114,7 +114,7 @@ const KnowledgeBase = () => {
         setMaintenanceNotification(null);
         setMigrationResult(null);
         try {
-            const res = await fetch('http://localhost:8001/migration/preview');
+            const res = await fetch('https://qadri-steel-and-tubes.onrender.com/migration/preview');
             const data = await res.json();
             if (!res.ok) throw new Error(data.detail || 'Failed to fetch preview.');
             setPreviewData(data.preview);
@@ -130,7 +130,7 @@ const KnowledgeBase = () => {
         setMaintenanceNotification(null);
         setPreviewData(null);
         try {
-            const res = await fetch('http://localhost:8001/migration/run', { method: 'POST' });
+            const res = await fetch('https://qadri-steel-and-tubes.onrender.com/migration/run', { method: 'POST' });
             const data = await res.json();
             if (!res.ok) throw new Error(data.detail || 'Migration failed.');
             
@@ -150,7 +150,7 @@ const KnowledgeBase = () => {
         setMaintenanceLoading(true);
         setMaintenanceNotification(null);
         try {
-            const res = await fetch('http://localhost:8001/migration/restore', {
+            const res = await fetch('https://qadri-steel-and-tubes.onrender.com/migration/restore', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ backup_filename: selectedBackup })

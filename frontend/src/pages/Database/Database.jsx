@@ -12,7 +12,7 @@ const Database = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://127.0.0.1:8001/products');
+      const response = await fetch('https://qadri-steel-and-tubes.onrender.com/products');
       if (response.ok) {
         const data = await response.json();
         if (Array.isArray(data)) setProducts(data);
