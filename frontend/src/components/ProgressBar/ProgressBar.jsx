@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './ProgressBar.css';
+import { FaArrowUp } from 'react-icons/fa';
 
 const ProgressBar = () => {
   const [progress, setProgress] = useState(0);
@@ -34,10 +35,11 @@ export const ScrollToTop = () => {
   }, []);
   if (!show) return null;
   return (
-    <button className="scroll-top-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} title="Back to top">
-      ↑
+    <button className="scroll-top-btn" onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }} title="Back to top">
+      <FaArrowUp />
     </button>
   );
 };
 
 export default ProgressBar;
+
