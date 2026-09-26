@@ -30,6 +30,7 @@ const Billing = () => {
     emptyRow(), emptyRow(), emptyRow(), emptyRow(), emptyRow(),
   ]);
   const [labour, setLabour] = useState('');
+  const [labourDesc, setLabourDesc] = useState('Labour');
   const [lorryNo, setLorryNo] = useState('');
 
   const updateRow = (index, field, value) => {
