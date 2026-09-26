@@ -176,10 +176,10 @@ const Billing = () => {
               <td className="td-particulars">
                 <input
                   className="td-input italic"
-                  value={labour ? `Labour` : ''}
-                  readOnly
-                  placeholder="Labour (fill amount →)"
-                  style={{ color: '#555', cursor: 'default' }}
+                  value={labourDesc}
+                  onChange={e => setLabourDesc(e.target.value)}
+                  placeholder="Labour / Transport"
+                  style={{ color: '#111' }}
                 />
               </td>
               <td className="td-hsn"></td>
