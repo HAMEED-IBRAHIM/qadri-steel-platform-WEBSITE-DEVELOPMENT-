@@ -69,21 +69,15 @@ const Sidebar = ({ isOpen, onClose }) => {
           <span>Product Catalog</span>
         </NavLink>
 
-        {/* Quotations — Manager only */}
-        {isManager && (
-          <NavLink to="/quotes" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
+        <NavLink to="/quotes" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
             <FaFileInvoiceDollar className="nav-icon" />
-            <span>Quotations <span className="manager-pill">M</span></span>
+            <span>Quotations</span>
           </NavLink>
-        )}
 
-        {/* Stock Register - Manager only */}
-        {isManager && (
-          <NavLink to="/stock-register" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
-            <FaTable className="nav-icon" />
-            <span>Stock Register <span className="manager-pill">M</span></span>
-          </NavLink>
-        )}
+        <NavLink to="/stock-register" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
+          <FaTable className="nav-icon" />
+          <span>Stock Register</span>
+        </NavLink>
 
         <NavLink to="/orders" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
           <FaClipboardList className="nav-icon" />
@@ -137,5 +131,6 @@ const Sidebar = ({ isOpen, onClose }) => {
 };
 
 export default Sidebar;
+
 
 
