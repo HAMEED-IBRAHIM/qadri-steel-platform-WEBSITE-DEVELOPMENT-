@@ -28,14 +28,35 @@ const ProgressBar = () => {
 
 export const ScrollToTop = () => {
   const [show, setShow] = useState(false);
+  
   useEffect(() => {
-    const handler = () => setShow(window.scrollY > 300);
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
+    const handler = (e) => {
+      const target = e.target;
+      const scrollY = target === document ? window.scrollY : (target.scrollTop || 0);
+      if (scrollY > 100) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handler, true);
+    return () => window.removeEventListener('scroll', handler, true);
   }, []);
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.body.scrollTo({ top: 0, behavior: 'smooth' });
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+    const appLayout = document.querySelector('.app-layout');
+    if (appLayout) appLayout.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   if (!show) return null;
   return (
-    <button className="scroll-top-btn" onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }} title="Back to top">
+    <button className="scroll-top-btn" onClick={handleClick} title="Back to top">
       <FaArrowUp />
     </button>
   );
