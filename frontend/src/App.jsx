@@ -24,6 +24,7 @@ import KnowledgeBase from "./pages/KnowledgeBase/KnowledgeBase";
 import Projects from "./pages/Projects/Projects.jsx";
 import Calculator from "./pages/Calculator/Calculator";
 import StockRegister from "./pages/StockRegister/StockRegister";
+import Billing from "./pages/Billing/Billing";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { getCurrentUser, isAuthenticated } from "./services/authService";
 import "./styles/layout.css";
@@ -106,7 +107,7 @@ function App() {
               <Route path="/settings" element={<Settings />} />
                 <Route path="/profile" element={<Profile />} />
               <Route path="/calculator" element={<Calculator />} />
-              <Route path="/stock-register" element={<StockRegister />} />
+              <Route path="/stock-register" element={<StockRegister />} />`n              <Route path="/billing" element={<Billing />} />
             </Route>
           </Route>
 

@@ -13,7 +13,8 @@ import {
   FaUserShield,
   FaEye,
   FaTable,
-  FaGlobe
+  FaGlobe,
+  FaFileInvoice
 } from 'react-icons/fa';
 import { logoutUser } from '../services/authService';
 import { useRole } from '../context/RoleContext';
@@ -89,7 +90,12 @@ const Sidebar = ({ isOpen, onClose }) => {
           <span>Orders</span>
         </NavLink>
 
-                <NavLink to="/explore" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
+                <NavLink to="/billing" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
+          <FaFileInvoice className="nav-icon" />
+          <span>Billing</span>
+        </NavLink>
+
+        <NavLink to="/explore" className={({isActive}) => isActive ? "nav-item active" : "nav-item"} onClick={onClose}>
           <FaGlobe className="nav-icon" />
           <span>Explore QS</span>
         </NavLink>
@@ -131,3 +137,5 @@ const Sidebar = ({ isOpen, onClose }) => {
 };
 
 export default Sidebar;
+
+
