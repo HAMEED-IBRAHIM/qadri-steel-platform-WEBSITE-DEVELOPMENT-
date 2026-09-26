@@ -45,19 +45,33 @@ export const ScrollToTop = () => {
   }, []);
 
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.body.scrollTo({ top: 0, behavior: 'smooth' });
-    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
-    const mainContent = document.querySelector('.main-content');
-    if (mainContent) mainContent.scrollTo({ top: 0, behavior: 'smooth' });
-    const appLayout = document.querySelector('.app-layout');
-    if (appLayout) appLayout.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch(e) {}
+    try {
+      const mainContent = document.querySelector('.main-content');
+      if (mainContent) {
+        mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+        mainContent.scrollTop = 0;
+      }
+    } catch(e) {}
+    try {
+      const appLayout = document.querySelector('.app-layout');
+      if (appLayout) {
+        appLayout.scrollTo({ top: 0, behavior: 'smooth' });
+        appLayout.scrollTop = 0;
+      }
+    } catch(e) {}
+    try {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    } catch(e) {}
   };
 
   if (!show) return null;
   return (
     <button className="scroll-top-btn" onClick={handleClick} title="Back to top">
-      <FaArrowUp />
+      <FaArrowUp size={20} />
     </button>
   );
 };
